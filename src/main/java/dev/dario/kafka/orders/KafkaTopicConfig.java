@@ -1,4 +1,4 @@
-package dev.dario.kafka.config;
+package dev.dario.kafka.orders;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
