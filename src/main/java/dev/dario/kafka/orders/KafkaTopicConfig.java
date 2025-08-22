@@ -10,7 +10,7 @@ public class KafkaTopicConfig {
 
   @Bean
   public NewTopic ordersTopic() {
-    return TopicBuilder.name("orders")
+    return TopicBuilder.name("ordersJSON")
         .partitions(3)
         .build();
   }

@@ -25,7 +25,7 @@ public class JsonKafkaProducer {
 
     Message<OrderEventDTO> message = MessageBuilder
         .withPayload(data)
-        .setHeader(KafkaHeaders.TOPIC, "orders")
+        .setHeader(KafkaHeaders.TOPIC, "ordersJSON")
         .build();
 
     LOGGER.info(String.format("ORDER message sent -> %s ", data.toString()));
