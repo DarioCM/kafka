@@ -21,7 +21,6 @@ public class JsonKafkaProducer {
     this.kafkaTemplate = kafkaTemplate;
   }
 
-
   public void sendMessageEvent(OrderEventDTO data) {
 
     Message<OrderEventDTO> message = MessageBuilder
@@ -30,7 +29,6 @@ public class JsonKafkaProducer {
         .build();
 
     LOGGER.info(String.format("ORDER message sent -> %s ", data.toString()));
-
     kafkaTemplate.send(message);
 
   }
