@@ -1,5 +1,6 @@
 package dev.dario.kafka.orders;
 
+import dev.dario.kafka.orders.config.TopicProps;
 import dev.dario.kafka.orders.dto.OrderEventDTO;
 
 import org.slf4j.Logger;
@@ -16,16 +17,18 @@ public class JsonKafkaProducer {
   private static final Logger LOGGER = LoggerFactory.getLogger(JsonKafkaProducer.class);
 
   private final KafkaTemplate<String, OrderEventDTO> kafkaTemplate;
+  private final TopicProps props;
 
-  public JsonKafkaProducer(KafkaTemplate<String, OrderEventDTO> kafkaTemplate) {
+  public JsonKafkaProducer(KafkaTemplate<String, OrderEventDTO> kafkaTemplate, TopicProps props) {
     this.kafkaTemplate = kafkaTemplate;
+    this.props = props;
   }
 
   public void sendMessageEvent(OrderEventDTO data) {
 
     Message<OrderEventDTO> message = MessageBuilder
         .withPayload(data)
-        .setHeader(KafkaHeaders.TOPIC, "ordersJSON")
+        .setHeader(KafkaHeaders.TOPIC, props.getTopicOrdersJson())
         .build();
 
     LOGGER.info(String.format("ORDER message sent -> %s ", data.toString()));
